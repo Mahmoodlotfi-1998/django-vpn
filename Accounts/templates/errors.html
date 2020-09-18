@@ -1,0 +1,44 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" href="{% static 'css\bootstrap.css' %}" >
+    <link rel="stylesheet" href="{% static 'css\login.css' %}">
+	<link href="https://fonts.googleapis.com/css?family =Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+        <style rel="stylesheet">
+            .error-content{
+                border: 2px solid red;
+                position: absolute;
+                text-align: right;
+                top: 15vh;
+                width: 300px;
+                background: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px 0px #000;
+
+            }
+            .center{
+                margin-left: 30%;
+            }
+        </style>
+</head>
+<body>
+<center class="center">
+    <div class="error-content">
+        <div class="alert alert-danger " role="alert">
+            <strong>{{ error }}</strong>
+        </div>
+        <a type="button" class="btn btn-info" href="{% if page  %} {% url 'login' %} {% endif %} {% if not page  %} {% return render(request,"login-otp.html",{'phone_send':phone_number}) %} {% endif %} ">OK</a>
+    </div>
+</center>
+
+</body>
+</html>

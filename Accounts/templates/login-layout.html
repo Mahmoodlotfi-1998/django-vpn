@@ -1,0 +1,49 @@
+{% extends 'base-layout.html' %}
+{% load static  %}
+
+{% block content %}
+<section class="container-fluid bg">
+    <img class="wave" src="{% static 'img/wave.png' %}" />
+	<div class="container">
+		<div class="img">
+			<img src="{% static 'img/bg.svg' %}">
+		</div>
+		<div class="login-content">
+        <div class="row">
+            <section class="container-fluid bg">
+                <section class="row justify-content-center ">
+                    <section class="col-12 col-sm-6 col-md-3 form-container">
+
+                        <form method="post" action="{% url 'accounts:valid_phone' %}">
+                            {% csrf_token %}
+                        <div class="col s8 m6 l10">
+                            <input name="phone" type="text" id="phone" placeholder="شماره خود را وارد کنید"/>
+                            <div class="g-recaptcha" data-sitekey="6Lc-kckZAAAAAGPuE_kyDmOzZyEDSasxIBqcmIaq"></div>
+
+                            <div class="row">
+                              {% if messages %}
+                             <div class="col-12">
+                                {% for message in messages %}
+                                {% if message.tags == 'error' %}
+                                <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% endfor %}
+                              </div>
+                              {% endif %}
+                            </div>
+
+                            <button class="btn btn-primary" style="text-align: " type="submit" name="user type" value="{{user_type}}">ارسال</button>
+                        </div>
+                        </form>
+                    </section>
+                </section>
+            </section>
+
+        </div>
+        </div>
+    </div>
+    </section>
+    <script type="text/javascript" src=" {% static 'js/main.js' %}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+{% endblock %}
